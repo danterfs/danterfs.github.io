@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º ENCONTRO DOS GESTORES DE COMPRAS PÚBLICAS DO IFPB</title>
+    <style>
+        /* CSS ATUALIZADO COM CORES DO IFPB (VERDE) E AJUSTE DE LAYOUT */
+        :root {
+            --cor-ifpb-verde: #008000; /* Verde IFPB */
+            --cor-ifpb-verde-claro: #e6ffe6; /* Fundo Leve */
+            --cor-destaque: #004d99; /* Azul (como detalhe ou alternativa) */
+            --cor-fundo: #f8f8f8;
+            --cor-texto: #333;
+            --cor-clara: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- CABEÇALHO (HEADER) --- */
+        .header-section {
+            background-color: var(--cor-ifpb-verde);
+            color: var(--cor-clara);
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-section h1 {
+            font-size: 2.8em;
+            margin-bottom: 5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .header-section h2 {
+            font-size: 1.8em;
+            margin-top: 0;
+            font-weight: 400;
+        }
+
+        .header-section p {
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+        
+        /* --- SEÇÕES GERAIS --- */
+        .section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--cor-ifpb-verde);
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background-color: var(--cor-destaque);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- APRESENTAÇÃO E PÚBLICO (AJUSTE DE PROPORÇÃO) --- */
+        .presentation-grid {
+            display: flex;
+            gap: 30px;
+            align-items: stretch; 
+        }
+
+        .presentation-content, .target-audience {
+            background-color: var(--cor-clara);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .presentation-content {
+            flex: 3; 
+        }
+
+        .target-audience {
+            flex: 1; 
+            text-align: center;
+            border-left: 5px solid var(--cor-destaque);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .target-audience h3 {
+            color: var(--cor-destaque);
+            margin-top: 0;
+        }
+        
+        /* --- PROGRAMAÇÃO (SCHEDULE) --- */
+        .schedule-day {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: var(--cor-clara);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .day-header {
+            background-color: var(--cor-ifpb-verde);
+            color: var(--cor-clara);
+            padding: 15px 20px;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: flex-start;
+            border-bottom: 1px dashed #eee;
+            padding: 20px;
+            transition: background-color 0.3s;
+        }
+        
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-item:hover {
+            background-color: var(--cor-ifpb-verde-claro); 
+        }
+
+        .event-time {
+            flex-shrink: 0;
+            width: 140px; 
+            font-weight: bold;
+            color: var(--cor-destaque);
+            font-size: 1.1em;
+            padding-top: 2px;
+        }
+
+        .event-details {
+            flex-grow: 1;
+            padding-left: 20px;
+            border-left: 3px solid var(--cor-ifpb-verde-claro);
+        }
+
+        .speaker {
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
+            display: block;
+            font-size: 0.95em;
+        }
+        
+        .break {
+            background-color: #f0f0f0; 
+            font-weight: 600;
+            color: var(--cor-ifpb-verde);
+        }
+        
+        /* --- DETALHES E INCLUSÕES (NOVO AJUSTE DE PROPORÇÃO) --- */
+        .details-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .detail-box {
+            flex: 1; 
+            min-width: 250px;
+            padding: 30px;
+            background-color: var(--cor-clara);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-top: 8px solid var(--cor-ifpb-verde); 
+        }
+        
+        .detail-box h3 {
+            color: var(--cor-ifpb-verde);
+            margin-top: 0;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        
+        .list-style {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            display: inline-block;
+        }
+        
+        .list-style li {
+            margin-bottom: 10px;
+        }
+        
+        .list-style li::before {
+            content: "➤ ";
+            color: var(--cor-destaque);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header-section">
+        <div class="container">
+            <p></p>
+            <h1>1º ENCONTRO DOS GESTORES DE COMPRAS PÚBLICAS</h1>
+            <h2>DO IFPB</h2>
+            <p><strong>10 a 12 de Dezembro | 2025</strong> - Local: Areia/PB</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="section">
+            <h2 class="section-title">Apresentação e Objetivos</h2>
+            <div class="presentation-grid">
+                <div class="presentation-content">
+                    <p>Com a implementação da NLLC 14.133/2021, o IFPB, por meio de suas subcomissões de compras e licitações, busca a padronização de processos e a realização de aquisições e contratações de serviços da forma mais eficiente possível, alinhando-se ao novo mundo das Compras Públicas.</p>
+                    <p>É o momento de fortalecer as boas práticas, bem como aprofundar o estudo sobre o que precisa ser aperfeiçoado e, então, solucionado.</p>
+                    <p>A 1ª edição do Encontro reunirá os atores principais responsáveis pelas compras no instituto, promovendo discussões, apresentação de propostas e a formação de networking organizacional.</p>
+                    <p>Serão 3 dias de intenso conteúdo com a oportunidade de ampliar o conhecimento e compartilhar experiências valiosas em Compras Diretas e Licitações, com a participação de palestrantes de grande renome no país.</p>
+                </div>
+                <div class="target-audience">
+                    <h3>PÚBLICO ALVO</h3>
+                    <p><strong>Coordenadores de Compras e Licitações do IFPB.</strong></p>
+                    <p>Modalidade: PRESENCIAL</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <h2 class="section-title">Programação Completa</h2>
+
+            <div class="schedule-day">
+                <div class="day-header">QUARTA-FEIRA | 10.DEZ</div>
+                <div class="event-item break">
+                    <div class="event-time">18h às 19h</div>
+                    <div class="event-details">Recepção e Credenciamento</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">20h às 21h</div>
+                    <div class="event-details">
+                        Palestra Inaugural: 116 anos de IFPB: Desafios para uma gestão sustentável e inovadora
+                        <span class="speaker">(Reitoria)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-day">
+                <div class="day-header">QUINTA-FEIRA | 11.DEZ</div>
+                <div class="event-item break">
+                    <div class="event-time">8h às 8:20h</div>
+                    <div class="event-details">Abertura do Evento</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">8:30h às 10:30h</div>
+                    <div class="event-details">
+                        Planejamento da Contratação nas Compras Diretas: Dispensa e Inexigibilidade
+                        <span class="speaker">Ronny Charles (Advogado da União)</span>
+                    </div>
+                </div>
+                <div class="event-item break">
+                    <div class="event-time">10:30h às 11h</div>
+                    <div class="event-details">Intervalo (Coffee Break)</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">11h às 12h</div>
+                    <div class="event-details">
+                        Palestra sobre avanços e desafios sob a perspectiva da INSTRUÇÃO NORMATIVA PRAF/RE/IFPB n° XX/2024
+                        <span class="speaker">(DCCL-RE)</span>
+                    </div>
+                </div>
+                <div class="event-item break">
+                    <div class="event-time">12h às 14h</div>
+                    <div class="event-details">Intervalo (Almoço)</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">14h às 15:30h</div>
+                    <div class="event-details">
+                        Instrução processual e regularidade jurídica da contratação
+                        <span class="speaker">(Procuradoria Federal junto à Reitoria do IFPB)</span>
+                    </div>
+                </div>
+                <div class="event-item break">
+                    <div class="event-time">15:30h às 16h</div>
+                    <div class="event-details">Intervalo (Coffee Break)</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">16h às 18h</div>
+                    <div class="event-details">
+                        Sistema de Registro de Preços na NLL: potencialidades e boas práticas
+                        <span class="speaker">Ronny Charles (Advogado da União)</span>
+                    </div>
+                </div>
+                <div class="event-item break">
+                    <div class="event-time">18h</div>
+                    <div class="event-details">Encerramento das atividades do dia</div>
+                </div>
+            </div>
+
+            <div class="schedule-day">
+                <div class="day-header">SEXTA-FEIRA | 12.DEZ</div>
+                <div class="event-item">
+                    <div class="event-time">8h às 10h</div>
+                    <div class="event-details">
+                        Capacitação e Formação de Pregoeiros
+                        <span class="speaker">Nádia Dall Agnol (Especialista em licitações)</span>
+                    </div>
+                </div>
+                <div class="event-item break">
+                    <div class="event-time">10h às 10:30h</div>
+                    <div class="event-details">Intervalo (Coffee Break)</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">10:30h às 12h</div>
+                    <div class="event-details">
+                        Palestra sobre inovação nas contratações públicas - Caso da FUNETEC
+                        <span class="speaker">(FUNETEC)</span>
+                    </div>
+                </div>
+                <div class="event-item break">
+                    <div class="event-time">12h às 14h</div>
+                    <div class="event-details">Intervalo (Almoço)</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">14h às 15:30h</div>
+                    <div class="event-details">
+                        Padronização de documentos processuais de compras como ferramenta para otimização do processo - Caso da Subcomissão Borborema
+                        <span class="speaker">(Subcomissão Borborema IFPB)</span>
+                    </div>
+                </div>
+                <div class="event-item break">
+                    <div class="event-time">15:30h às 16h</div>
+                    <div class="event-details">Intervalo (Coffee Break)</div>
+                </div>
+                <div class="event-item">
+                    <div class="event-time">16h às 18h</div>
+                    <div class="event-details">
+                        Pregão Eletrônico na Prática (ComprasGov)
+                        <span class="speaker">Nádia Dall Agnol (Especialista em licitações)</span>
+                    </div>
+                </div>
+                <div class="event-item break">
+                    <div class="event-time">18h</div>
+                    <div class="event-details">Encerramento Oficial</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Detalhes e Inscrição</h2>
+            <div class="details-grid">
+                <div class="detail-box">
+                    <h3>ESTÁ INCLUSO NO VALOR POR INSCRIÇÃO</h3>
+                    <ul class="list-style">
+                        <li>01 jantar de abertura</li>
+                        <li>04 coffee breaks</li>
+                    </ul>
+                </div>
+                <div class="detail-box">
+                    <h3>MATERIAL DE APOIO</h3>
+                    <ul class="list-style">
+                        <li>Apostila impressa com conteúdo exclusivo do evento</li>
+                        <li>Certificado Geral com Carga Horária de 17h</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="header-section" style="padding: 20px 0;">
+        <div class="container">
+            <p>©2025 - 1º Encontro dos Gestores de Compras Públicas do IFPB</p>
+        </div>
+    </footer>
+
+</body>
+</html>
